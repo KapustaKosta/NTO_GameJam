@@ -32,10 +32,10 @@ public class CardControl : MonoBehaviour
     private string nowModifier;
     private List<Card> cards;
 
-    public float money = 50;
+    public float money = 10000000;
     public float health = 50;
     public float friends = 50;
-    public float income = 10;
+    public float income = 100000;
 
     int notRepeatedCardsCount;
 
@@ -76,7 +76,7 @@ public class CardControl : MonoBehaviour
             bool res = false;
             while (!res)
             {
-                nextCard = cards[Random.Range(0, cards.Count - 1)];
+                nextCard = cards[Random.Range(0, cards.Count)];
                 res = true;
                 if (!nextCard.mayRepeat && nextCard.used)
                 {
@@ -89,7 +89,7 @@ public class CardControl : MonoBehaviour
                     {
                         case "здоровье < 50":
                             {
-                                if (health > 50)
+                                if (health >= 30)
                                 {
                                     res = false;
                                 }
@@ -113,7 +113,7 @@ public class CardControl : MonoBehaviour
                             }
                         case "Random.Next(100) > 90":
                             {
-                                int a = Random.RandomRange(0, 100);
+                                int a = Random.Range(0, 100);
                                 if (a < 90)
                                 {
                                     res = false;
@@ -199,6 +199,8 @@ public class CardControl : MonoBehaviour
                 friends += condition.friends;
                 income += condition.income;
                 nowModifier = condition.modifier;
+                money += income;
+                health -= 1;
                 SetMoneyText();
 
                 card = Instantiate(cardPrefab, canvas.transform);
@@ -238,7 +240,7 @@ public class CardControl : MonoBehaviour
                             {
                                 case "здоровье < 50":
                                     {
-                                        if (health > 50)
+                                        if (health >= 50)
                                         {
                                             res = false;
                                         }
@@ -262,7 +264,7 @@ public class CardControl : MonoBehaviour
                                     }
                                 case "Random.Next(100) > 90":
                                     {
-                                        int a = Random.RandomRange(0, 100);
+                                        int a = Random.Range(0, 100);
                                         if (a < 90)
                                         {
                                             res = false;
