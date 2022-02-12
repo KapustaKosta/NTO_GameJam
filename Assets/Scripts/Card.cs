@@ -32,6 +32,7 @@ public class Card
 
     public Card(string text, Condition yesCondition, Condition noCondition, Person person) : this(text, yesCondition, noCondition)
     {
+        this.modifierCondition = "";
         used = false;
         this.person = person;
     }
@@ -48,6 +49,7 @@ public class Card
 
     public Card(string text, Condition yesCondition, Condition noCondition, Person person, bool mayRepeat) : this(text, yesCondition, noCondition, person)
     {
+        this.modifierCondition = "";
         used = false;
         this.mayRepeat = mayRepeat;
     }

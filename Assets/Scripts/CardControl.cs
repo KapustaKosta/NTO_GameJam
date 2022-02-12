@@ -162,7 +162,7 @@ public class CardControl : MonoBehaviour
         {
             Touch touch = Input.GetTouch(0);
             Vector3 touchPosWorld = camera.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, camera.nearClipPlane));
-            if (touchPosWorld.x > card.transform.position.x - 0.5f && touchPosWorld.x < card.transform.position.x + 0.5f && touchPosWorld.y > card.transform.position.y - 1f &&
+            if (touchPosWorld.x > card.transform.position.x - 1f && touchPosWorld.x < card.transform.position.x + 1f && touchPosWorld.y > card.transform.position.y - 1f &&
                 touchPosWorld.y < card.transform.position.y + 1f) isTouch = true;
             else isTouch = false;
             if (!isTouch) return;
@@ -198,6 +198,7 @@ public class CardControl : MonoBehaviour
                 health += condition.health;
                 friends += condition.friends;
                 income += condition.income;
+                nowModifier = condition.modifier;
                 SetMoneyText();
 
                 card = Instantiate(cardPrefab, canvas.transform);
