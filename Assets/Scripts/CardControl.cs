@@ -64,7 +64,7 @@ public class CardControl : MonoBehaviour
 
         foreach (Card c in cards)
         {
-            if (c.modifierCondition == nowModifier)
+            if (c.modifierCondition.Length > 0 && c.modifierCondition == nowModifier)
             {
                 nextCard = c;
                 nowModifier = "";
@@ -211,9 +211,34 @@ public class CardControl : MonoBehaviour
 
                 Card nextCard = null;
 
+                if (friends < 0)
+                {
+                    nextCard = cards[27];
+                    nowCard = nextCard;
+                    cardText.text = nextCard.text;
+                    return;
+                }
+
+                if (money < 0)
+                {
+                    nextCard = cards[28];
+                    nowCard = nextCard;
+                    cardText.text = nextCard.text;
+                    return;
+                }
+
+                if (health < 20)
+                {
+                    nextCard = cards[29];
+                    nowCard = nextCard;
+                    cardText.text = nextCard.text;
+                    return;
+                }
+
+
                 foreach (Card c in cards)
                 {
-                    if (c.modifierCondition == nowModifier)
+                    if (c.modifierCondition.Length > 0 && c.modifierCondition == nowModifier)
                     {
                         nextCard = c;
                         nowModifier = "";
@@ -228,6 +253,11 @@ public class CardControl : MonoBehaviour
                         nextCard = cards[Random.Range(0, cards.Count - 1)];
                         res = true;
                         if (!nextCard.mayRepeat && nextCard.used)
+                        {
+                            res = false;
+                            continue;
+                        }
+                        if(nextCard.modifierCondition.Length > 0 && nextCard.modifierCondition != nowModifier)
                         {
                             res = false;
                             continue;
@@ -271,6 +301,7 @@ public class CardControl : MonoBehaviour
                                     }
                             }
                         }
+                        if (res && nowModifier.Length > 0 && nextCard.modifierCondition != nowModifier) res = false; 
                         if (res && !nextCard.mayRepeat && !nextCard.used)
                         {
                             nextCard.used = true;
