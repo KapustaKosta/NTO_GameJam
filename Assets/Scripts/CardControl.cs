@@ -44,7 +44,7 @@ public class CardControl : MonoBehaviour
     public float friends = 50;
     public float income = 100000;
 
-    int notRepeatedCardsCount = 11;
+    int notRepeatedCardsCount = 10;
 
     void Start()
     {
@@ -113,6 +113,8 @@ public class CardControl : MonoBehaviour
                     condition = nowCard.yesCondition;
                 }
                 else condition = nowCard.noCondition;
+                if (!nowCard.mayRepeat && condition.modifier != "Суд с “Пиццерия3”" && condition.modifier != "Рекламная кампания против “Пиццерии3” проведена" && condition.modifier != "Участие в конкурсе" &&
+                    condition.modifier != "Очная конференция"  && condition.modifier != "Онлайн конференция") notRepeatedCardsCount--;
                 money += condition.money;
                 health += condition.health;
                 friends += condition.friends;
@@ -138,7 +140,6 @@ public class CardControl : MonoBehaviour
                 if (!nextCard.mayRepeat)
                 {
                     nextCard.used = true;
-                    notRepeatedCardsCount--;
                 }
                 Debug.Log(notRepeatedCardsCount);
                 if (nowCard.modifierCondition.Contains("Финал"))
@@ -207,7 +208,8 @@ public class CardControl : MonoBehaviour
         bool res = false;
         while (!res)
         {
-            nextCard = cards[Random.Range(0, cards.Count - 4)];
+            int index = Random.Range(0, cards.Count - 3);
+            nextCard = cards[index];
             if(nowCard != null && nextCard.text == nowCard.text) continue;
             res = true;
             if (!nextCard.mayRepeat && nextCard.used)
@@ -215,13 +217,16 @@ public class CardControl : MonoBehaviour
                 res = false;
                 continue;
             }
-            if (nextCard.modifierCondition.Length > 0 && nextCard.modifierCondition != nowModifier)
+            if (nextCard.modifierCondition.Length > 0 && nextCard.modifierCondition != nowModifier && nextCard.modifierCondition != "Все карточки закончились (кроме повторяющихся) и Деньги < начального значения" &&
+                nextCard.modifierCondition != "Все карточки закончились (кроме повторяющихся) и Деньги >= начального значения." && nextCard.modifierCondition != "здоровье < 50")
             {
                 res = false;
                 continue;
             }
-            if (nextCard.modifierCondition != "")
+            Debug.Log(nextCard.modifierCondition);
+            if (nextCard.modifierCondition.Length > 0)
             {
+                Debug.Log(nextCard.modifierCondition);
                 switch (nextCard.modifierCondition)
                 {
                     case "здоровье < 50":
@@ -235,7 +240,8 @@ public class CardControl : MonoBehaviour
                         }
                     case "Все карточки закончились (кроме повторяющихся) и Деньги < начального значения":
                         {
-                            if (money >= startMoney && notRepeatedCardsCount > 0)
+                            Debug.Log("1: " + money + " " + startMoney + " " + notRepeatedCardsCount);
+                            if (money >= startMoney || notRepeatedCardsCount > 0)
                             {
                                 res = false;
                                 continue;
@@ -244,7 +250,8 @@ public class CardControl : MonoBehaviour
                         }
                     case "Все карточки закончились (кроме повторяющихся) и Деньги >= начального значения.":
                         {
-                            if (money < startMoney && notRepeatedCardsCount > 0)
+                            Debug.Log("2: " + money + " " + startMoney + " " + notRepeatedCardsCount);
+                            if (money < startMoney || notRepeatedCardsCount > 0)
                             {
                                 res = false;
                                 continue;

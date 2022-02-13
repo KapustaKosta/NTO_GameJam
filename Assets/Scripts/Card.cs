@@ -5,7 +5,7 @@ using UnityEngine;
 public class Card
 {
     public string text;
-    public string modifierCondition;
+    public string modifierCondition = "";
     public Condition yesCondition;
     public Condition noCondition;
     public Person person;
@@ -16,7 +16,6 @@ public class Card
     {
         used = false;
         this.text = text;
-        this.modifierCondition = "";
         this.yesCondition = yesCondition;
         this.noCondition = noCondition;
     }
@@ -32,7 +31,6 @@ public class Card
 
     public Card(string text, Condition yesCondition, Condition noCondition, Person person) : this(text, yesCondition, noCondition)
     {
-        this.modifierCondition = "";
         used = false;
         this.person = person;
     }
@@ -49,7 +47,6 @@ public class Card
 
     public Card(string text, Condition yesCondition, Condition noCondition, Person person, bool mayRepeat) : this(text, yesCondition, noCondition, person)
     {
-        this.modifierCondition = "";
         used = false;
         this.mayRepeat = mayRepeat;
     }
