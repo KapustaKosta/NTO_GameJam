@@ -61,7 +61,8 @@ public class CardControl : MonoBehaviour
         answerPanel.gameObject.TryGetComponent<Image>(out answerTextPanel);
         Transform textPanel = answerPanel.transform.GetChild(0);
         textPanel.gameObject.TryGetComponent<Text>(out answerText);
-        card.transform.GetChild(2).gameObject.TryGetComponent<Image>(out personImage);
+        Transform panel = card.transform.GetChild(1);
+        panel.transform.GetChild(1).gameObject.TryGetComponent<Image>(out personImage);
 
         Card nextCard = GetNextCard();
         Debug.Log(nextCard.text);
@@ -126,7 +127,8 @@ public class CardControl : MonoBehaviour
                 answerPanel.gameObject.TryGetComponent<Image>(out answerTextPanel);
                 Transform textPanel = answerPanel.transform.GetChild(0);
                 textPanel.gameObject.TryGetComponent<Text>(out answerText);
-                card.transform.GetChild(2).gameObject.TryGetComponent<Image>(out personImage);
+                Transform panel = card.transform.GetChild(1);
+                panel.transform.GetChild(1).gameObject.TryGetComponent<Image>(out personImage);
 
                 Card nextCard = GetNextCard();
                 cardText.text = nextCard.text;
