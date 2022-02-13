@@ -55,6 +55,7 @@ public class CardControl : MonoBehaviour
         rightExtremePoint = card.transform.position + new Vector3(extremeDistance, 0, 0);
         leftExtremePoint = card.transform.position - new Vector3(extremeDistance, 0, 0);
         cards = Cards.getCards();
+
         card = Instantiate(cardPrefab, canvas.transform);
         card.transform.position = cardOriginPoint.position;
         Transform answerPanel = card.transform.GetChild(0);
