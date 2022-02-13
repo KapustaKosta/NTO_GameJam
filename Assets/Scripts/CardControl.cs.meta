@@ -3,7 +3,28 @@ guid: 26a8c34778180df4daa233c1c1dbe292
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - camera: {instanceID: 0}
+  - card: {instanceID: 0}
+  - cardPrefab: {instanceID: 0}
+  - canvas: {instanceID: 0}
+  - gameOverPanel: {instanceID: 0}
+  - cardOriginPoint: {instanceID: 0}
+  - answerTextPanel: {instanceID: 0}
+  - answerText: {instanceID: 0}
+  - cardText: {instanceID: 0}
+  - personNameText: {instanceID: 0}
+  - personPositionText: {instanceID: 0}
+  - personImage: {instanceID: 0}
+  - menImage: {fileID: 21300000, guid: acf1fc23490316542abd7fdc60da74ed, type: 3}
+  - wifeImage: {fileID: 21300000, guid: bcc0f5506222b19479ec7143ffd6b098, type: 3}
+  - doctorImage: {fileID: 21300000, guid: a37e94b75a4331e4d95fc57c29aa0d09, type: 3}
+  - daughterImage: {fileID: 21300000, guid: 9657199a76529f44a9669032556507d8, type: 3}
+  - colleagueImage: {fileID: 21300000, guid: d28c015cba22c4a41a56aea71a19c008, type: 3}
+  - cookImage: {fileID: 21300000, guid: 3de86b922f70cd1439df353fc9ca1bc2, type: 3}
+  - judgeImage: {fileID: 21300000, guid: 115e529f37ea55f4f8d0fca50b51be0d, type: 3}
+  - friendImage: {fileID: 21300000, guid: 05658c41d38f9a246b4030c15eaddf9f, type: 3}
+  - moneyText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

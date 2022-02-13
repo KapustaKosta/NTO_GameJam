@@ -95,5 +95,9 @@ public enum Person
     men,
     wife,
     doctor,
-    daughter
+    daughter,
+    colleague,
+    cook,
+    judge,
+    friend
 }
